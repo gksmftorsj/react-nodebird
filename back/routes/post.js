@@ -3,6 +3,8 @@ const multer = require("multer");
 const path = require("path");
 // filesystem조작하는 fs
 const fs = require("fs");
+const multerS3 = require("multer-s3");
+const AWS = require("aws-sdk");
 
 const { Post, Image, User, Comment, Hashtag } = require("../models");
 const { isLoggedIn } = require("./middlewares");
@@ -18,22 +20,35 @@ try {
   fs.mkdirSync("uploads");
 }
 
+AWS.config.update({
+  accessKeyId: process.env.S3_ACCESS_KEY_ID,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  region: "ap-northeast-2",
+});
+
 // multer -> single이면 req.file, array이면 req.files / 이미지나 파일이 아닌 나머지 text같은 것들은 req.body에 담겨있음
 // Node.js에서 'multipart/form-data' 형식의 데이터를 처리하기 위해서는 Multer 미들웨어를 사용하는 것이 일반적임
 // imgae만 먼저 업로드 하고 미리보기 띄운 후 content 작성하면 content 업로드
 // image 업로드 되고 글 작성을 안하면 저장된 image 삭제 안하고 냅둠 -> image들도 다 자산이기 때문에 용량 차지하는 것보다 삭제 안하는게 더 이득이 큼
 const upload = multer({
-  storage: multer.diskStorage({
-    destination(req, file, done) {
-      done(null, "uploads");
-    },
-    filename(req, file, done) {
-      // 제로초.png
-      const ext = path.extname(file.originalname); // 확장자 추출(.png)
-      const basename = path.basename(file.originalname, ext); // 제로초
-      done(null, basename + "_" + new Date().getTime() + ext); // 제로초1235312.png
+  storage: multerS3({
+    s3: new AWS.S3(),
+    bucket: "react-nodebird-sss3",
+    key(req, file, cb) {
+      cb(null, `original/${Date.now()}} ${path.basename(file.originalname)}`);
     },
   }),
+  // storage: multer.diskStorage({
+  //   destination(req, file, done) {
+  //     done(null, "uploads");
+  //   },
+  //   filename(req, file, done) {
+  //     // 제로초.png
+  //     const ext = path.extname(file.originalname); // 확장자 추출(.png)
+  //     const basename = path.basename(file.originalname, ext); // 제로초
+  //     done(null, basename + "_" + new Date().getTime() + ext); // 제로초1235312.png
+  //   },
+  // }),
   limits: { fileSize: 20 * 1024 * 1024 }, //20MB
 });
 
@@ -119,7 +134,7 @@ router.post(
   (req, res, next) => {
     // req.files에 upload된 정보가 들어있음
     console.log(req.files);
-    res.json(req.files.map((v) => v.filename));
+    res.json(req.files.map((v) => v.location));
   }
 );
 
