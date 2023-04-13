@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(helmet());
   app.use(
     cors({
-      origin: ["http://15.164.81.121"],
+      origin: ["http://nodebird.shop"],
       credentials: true,
     })
   );
@@ -78,7 +78,7 @@ app.use(
     cookie: {
       httpOnly: true,
       secure: false,
-      domain: process.env.NODE_ENV === "production" && ".15.164.81.121",
+      domain: process.env.NODE_ENV === "production" && ".nodebird.shop",
     },
   })
 );
