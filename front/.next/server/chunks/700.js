@@ -481,8 +481,6 @@ const Indicator = external_styled_components_default().div.withConfig({
 })(["text-align:center;& > div{width:75px;height:30px;line-height:30px;border-radius:15px;background:#313131;display:inline-block;text-align:center;color:white;font-size:15px;}"]); // css 덮어쓰기 -> 원래 class명 바꾸는데 GlobalStyle 시용하면 지정한 class명 그대로 들어감
 
 const Global = (0,external_styled_components_.createGlobalStyle)([".slick-slide{display:inline-block;}.ant-card-cover{transform:none !important;}"]);
-// EXTERNAL MODULE: ./config/config.js
-var config = __webpack_require__(1352);
 // EXTERNAL MODULE: external "react/jsx-runtime"
 var jsx_runtime_ = __webpack_require__(997);
 ;// CONCATENATED MODULE: ./components/ImagesZoom/index.js
@@ -525,10 +523,10 @@ const ImagesZoom = ({
           slidesToScroll: 1,
           children: images.map(v => /*#__PURE__*/jsx_runtime_.jsx(ImgWrapper, {
             children: /*#__PURE__*/jsx_runtime_.jsx("img", {
-              src: `${config/* backURL */.y}/${v.src}`,
-              alt: `${config/* backURL */.y}/${v.src}`
+              src: `${v.src}`,
+              alt: `${v.src}`
             })
-          }, `${config/* backURL */.y}/${v.src}`))
+          }, `${v.src}`))
         }), /*#__PURE__*/jsx_runtime_.jsx(Indicator, {
           children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
             children: [currentSlide + 1, " / ", images.length]
@@ -568,8 +566,8 @@ const PostImages = ({
     return /*#__PURE__*/(0,jsx_runtime_.jsxs)(jsx_runtime_.Fragment, {
       children: [/*#__PURE__*/jsx_runtime_.jsx("img", {
         role: "presentation",
-        src: `${config/* backURL */.y}/${images[0].src}`,
-        alt: `${config/* backURL */.y}/${images[0].src}`,
+        src: `${images[0].src}`,
+        alt: `${images[0].src}`,
         onClick: onZoom
       }), showImagesZoom && /*#__PURE__*/jsx_runtime_.jsx(components_ImagesZoom, {
         images: images,
@@ -586,8 +584,8 @@ const PostImages = ({
           width: "50%",
           display: "inline-block"
         },
-        src: `${config/* backURL */.y}/${images[0].src}`,
-        alt: `${config/* backURL */.y}/${images[0].src}`,
+        src: `${images[0].src}`,
+        alt: `${images[0].src}`,
         onClick: onZoom
       }), /*#__PURE__*/jsx_runtime_.jsx("img", {
         role: "presentation",
@@ -595,8 +593,8 @@ const PostImages = ({
           width: "50%",
           display: "inline-block"
         },
-        src: `${config/* backURL */.y}/${images[1].src}`,
-        alt: `${config/* backURL */.y}/${images[1].src}`,
+        src: `${images[1].src}`,
+        alt: `${images[1].src}`,
         onClick: onZoom
       }), showImagesZoom && /*#__PURE__*/jsx_runtime_.jsx(components_ImagesZoom, {
         images: images,
@@ -613,8 +611,8 @@ const PostImages = ({
           width: "50%",
           display: "inline-block"
         },
-        src: `${config/* backURL */.y}/${images[0].src}`,
-        alt: `${config/* backURL */.y}/${images[0].src}`,
+        src: `${images[0].src}`,
+        alt: `${images[0].src}`,
         onClick: onZoom
       }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
         role: "presentation",
