@@ -21,6 +21,7 @@ const PostImages = ({ images }) => {
       <>
         <img
           role="presentation"
+          // 원래 posts에서는 thumb를 보여줘야 부담이 덜함
           src={`${images[0].src.replace(/\/thumb\//, "/original/")}`}
           alt={`${images[0].src}`}
           onClick={onZoom}
