@@ -127,7 +127,7 @@ const PostForm = () => {
           display: "inline-block"
         },
         children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx("img", {
-          src: v,
+          src: v.replace(/\/thumb\//, "/original/"),
           style: {
             width: "200px"
           },

@@ -523,7 +523,7 @@ const ImagesZoom = ({
           slidesToScroll: 1,
           children: images.map(v => /*#__PURE__*/jsx_runtime_.jsx(ImgWrapper, {
             children: /*#__PURE__*/jsx_runtime_.jsx("img", {
-              src: `${v.src}`,
+              src: `${v.src.replace(/\/thumb\//, "/original/")}`,
               alt: `${v.src}`
             })
           }, `${v.src}`))

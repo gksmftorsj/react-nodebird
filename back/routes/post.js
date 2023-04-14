@@ -134,7 +134,9 @@ router.post(
   (req, res, next) => {
     // req.files에 upload된 정보가 들어있음
     console.log(req.files);
-    res.json(req.files.map((v) => v.location));
+    res.json(
+      req.files.map((v) => v.location.replace(/\/original\//, "/thumb/"))
+    );
   }
 );
 

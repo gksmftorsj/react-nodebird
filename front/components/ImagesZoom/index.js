@@ -41,7 +41,10 @@ const ImagesZoom = ({ images, onClose }) => {
             {/* 이미지 반복문 돌리면 Slick이 알아서 캐러셀로 만들어줌 */}
             {images.map((v) => (
               <ImgWrapper key={`${v.src}`}>
-                <img src={`${v.src}`} alt={`${v.src}`} />
+                <img
+                  src={`${v.src.replace(/\/thumb\//, "/original/")}`}
+                  alt={`${v.src}`}
+                />
               </ImgWrapper>
             ))}
           </Slick>
