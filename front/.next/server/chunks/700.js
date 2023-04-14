@@ -566,7 +566,7 @@ const PostImages = ({
     return /*#__PURE__*/(0,jsx_runtime_.jsxs)(jsx_runtime_.Fragment, {
       children: [/*#__PURE__*/jsx_runtime_.jsx("img", {
         role: "presentation",
-        src: `${images[0].src}`,
+        src: `${images[0].src.replace(/\/thumb\//, "/original/")}`,
         alt: `${images[0].src}`,
         onClick: onZoom
       }), showImagesZoom && /*#__PURE__*/jsx_runtime_.jsx(components_ImagesZoom, {
@@ -584,7 +584,7 @@ const PostImages = ({
           width: "50%",
           display: "inline-block"
         },
-        src: `${images[0].src}`,
+        src: `${images[0].src.replace(/\/thumb\//, "/original/")}`,
         alt: `${images[0].src}`,
         onClick: onZoom
       }), /*#__PURE__*/jsx_runtime_.jsx("img", {
@@ -593,7 +593,7 @@ const PostImages = ({
           width: "50%",
           display: "inline-block"
         },
-        src: `${images[1].src}`,
+        src: `${images[1].src.replace(/\/thumb\//, "/original/")}`,
         alt: `${images[1].src}`,
         onClick: onZoom
       }), showImagesZoom && /*#__PURE__*/jsx_runtime_.jsx(components_ImagesZoom, {
@@ -611,7 +611,7 @@ const PostImages = ({
           width: "50%",
           display: "inline-block"
         },
-        src: `${images[0].src}`,
+        src: `${images[0].src.replace(/\/thumb\//, "/original/")}`,
         alt: `${images[0].src}`,
         onClick: onZoom
       }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
