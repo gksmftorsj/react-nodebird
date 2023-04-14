@@ -7,7 +7,7 @@ exports.handler = async (event) => {
   try {
     const promises = event.Records.map(async (record) => {
       const Bucket = record.s3.bucket.name; // react-nodebird-sss3
-      const Key = decodeURIComponent(record.s3.object.key); // original/12312312_abc.png
+      const Key = decodeURIComponent(record.s3.object.key.replace(/\+/g, " ")); // original/12312312_abc.png
       console.log(Bucket, Key);
       const filename = Key.split("/")[Key.split("/").length - 1];
       const ext = Key.split(".")[Key.split(".").length - 1].toLowerCase();
