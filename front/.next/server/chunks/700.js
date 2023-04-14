@@ -565,7 +565,8 @@ const PostImages = ({
   if (images.length === 1) {
     return /*#__PURE__*/(0,jsx_runtime_.jsxs)(jsx_runtime_.Fragment, {
       children: [/*#__PURE__*/jsx_runtime_.jsx("img", {
-        role: "presentation",
+        role: "presentation" // 원래 posts에서는 thumb를 보여줘야 부담이 덜함
+        ,
         src: `${images[0].src.replace(/\/thumb\//, "/original/")}`,
         alt: `${images[0].src}`,
         onClick: onZoom

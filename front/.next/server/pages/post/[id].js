@@ -74,10 +74,10 @@ const Post = () => {
         content: singlePost.content
       }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx("meta", {
         property: "og:image",
-        content: singlePost.Images[0] ? singlePost.Images[0].src : "https://nodebird.com/favicon.ico"
+        content: singlePost.Images[0] ? singlePost.Images[0].src : "https://nodebird.shop/favicon.ico"
       }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx("meta", {
         property: "og:url",
-        content: `https://nodebird.com/post/${id}`
+        content: `https://nodebird.shop/post/${id}`
       })]
     }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx(_components_PostCard__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
       post: singlePost
