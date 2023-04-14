@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(helmet());
   app.use(
     cors({
-      origin: ["http://nodebird.shop"],
+      origin: ["https://nodebird.shop"],
       credentials: true,
     })
   );
@@ -77,7 +77,7 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     cookie: {
       httpOnly: true,
-      secure: false,
+      secure: true,
       domain: process.env.NODE_ENV === "production" && ".nodebird.shop",
     },
   })
@@ -94,6 +94,6 @@ app.use("/hashtag", hashtagRouter);
 // 에러처리 middleware -> 특별하게 에러처리 하고 싶을 때
 app.use((err, req, res, next) => {});
 
-app.listen(80, () => {
+app.listen(3065, () => {
   console.log("서버 실행 중!");
 });

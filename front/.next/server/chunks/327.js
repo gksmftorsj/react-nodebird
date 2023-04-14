@@ -9,7 +9,7 @@ exports.modules = {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "y": () => (/* binding */ backURL)
 /* harmony export */ });
-const backURL = "http://api.nodebird.shop";
+const backURL = "https://api.nodebird.shop";
 
 /***/ }),
 
