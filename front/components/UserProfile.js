@@ -52,7 +52,7 @@ const UserProfile = () => {
     >
       <Card.Meta
         avatar={
-          <Link href={`/user/${me.id}`} legacyBehavior>
+          <Link href={`/user/${me.id}`} legacyBehavior prefetch={false}>
             <a>
               <Avatar>{me.nickname[0]}</Avatar>
             </a>

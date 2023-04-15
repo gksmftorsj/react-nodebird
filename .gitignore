@@ -139,3 +139,6 @@ react-nodebird.pem
 react-nodebird-aws.pem
 node_modules
 .env
+
+# react-nodebird--admin 폴더 무시
+react-nodebird--admin/

@@ -21,6 +21,7 @@ import {
   LIKE_POST_REQUEST,
   UNLIKE_POST_REQUEST,
   RETWEET_REQUEST,
+  UPDATE_POST_REQUEST,
 } from "../reducers/post";
 
 moment.locale("ko");
@@ -32,6 +33,29 @@ const PostCard = ({ post }) => {
   const id = useSelector((state) => state.user.me?.id);
   const { removePostLoading } = useSelector((state) => state.post);
   const liked = post.Likers.find((v) => v.id === id);
+  const [editMode, setEditMode] = useState(false);
+
+  const onClickUpdate = useCallback(() => {
+    setEditMode(true);
+  }, []);
+
+  const onCancelUpdate = useCallback(() => {
+    setEditMode(false);
+  }, []);
+
+  // 부모태그로 끌어올린 이유는 PostId를 사용하기 위해서 -> 아레에서 하면 PostId도 props로 넘겨줘야 함
+  const onChangePost = useCallback(
+    (editText) => () => {
+      dispatch({
+        type: UPDATE_POST_REQUEST,
+        data: {
+          PostId: post.id,
+          content: editText,
+        },
+      });
+    },
+    [post]
+  );
 
   const onLike = useCallback(() => {
     // (prev) => !prev -> prev에는 이전 데이터가 들어가 있음 -> 이전 데이터가 true면 false로 false면 true로
@@ -103,7 +127,9 @@ const PostCard = ({ post }) => {
                 {/* id가 존재하고 post.User.id와 id가 같으면 수정, 삭제 보여주기 아니면 신고 보여주기*/}
                 {id && post.User.id === id ? (
                   <>
-                    <Button>수정</Button>
+                    {!post.RetweetId && (
+                      <Button onClick={onClickUpdate}>수정</Button>
+                    )}
                     <Button
                       type="danger"
                       loading={removePostLoading}
@@ -135,8 +161,8 @@ const PostCard = ({ post }) => {
             }
           >
             <div style={{ float: "right" }}>
-              {/* {moment(post.createdAt).format("YYYY.MM.DD")} */}
-              {moment(post.createdAt, "YYYYMMDD").fromNow()}
+              {moment(post.createdAt).format("YYYY.MM.DD")}
+              {/* {moment(post.createdAt, "YYYYMMDD").fromNow()} */}
             </div>
             <Card.Meta
               avatar={
@@ -151,14 +177,20 @@ const PostCard = ({ post }) => {
                 </Link>
               }
               title={post.Retweet.User.nickname}
-              description={<PostCardContent postData={post.Retweet.content} />}
+              description={
+                <PostCardContent
+                  onCancelUpdate={onCancelUpdate}
+                  onChangePost={onChangePost}
+                  postData={post.Retweet.content}
+                />
+              }
             />
           </Card>
         ) : (
           <>
             <div style={{ float: "right" }}>
-              {/* {moment(post.createdAt).format("YYYY.MM.DD")} */}
-              {moment(post.createdAt, "YYYYMMDD").fromNow()}
+              {moment(post.createdAt).format("YYYY.MM.DD")}
+              {/* {moment(post.createdAt, "YYYYMMDD").fromNow()} */}
             </div>
             <Card.Meta
               avatar={
@@ -173,7 +205,14 @@ const PostCard = ({ post }) => {
                 </Link>
               }
               title={post.User.nickname}
-              description={<PostCardContent postData={post.content} />}
+              description={
+                <PostCardContent
+                  editMode={editMode}
+                  onCancelUpdate={onCancelUpdate}
+                  onChangePost={onChangePost}
+                  postData={post.content}
+                />
+              }
             />
           </>
         )}
