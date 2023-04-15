@@ -115,7 +115,6 @@ const Signup = () => {
   const onSubmit = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(() => {
     if (password !== passwordCheck) setPasswordError(true);
     if (!term) setTermError(true);
-    console.log(email, nickname, password);
     dispatch({
       type: _reducers_user__WEBPACK_IMPORTED_MODULE_10__/* .SIGN_UP_REQUEST */ .pK,
       data: {

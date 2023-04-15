@@ -329,6 +329,7 @@ const PostCard = ({
           avatar: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx((next_link__WEBPACK_IMPORTED_MODULE_4___default()), {
             href: `/user/${post.Retweet.User.id}`,
             legacyBehavior: true,
+            prefetch: false,
             children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx("a", {
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx(antd__WEBPACK_IMPORTED_MODULE_1__.Avatar, {
                 children: post.Retweet.User.nickname[0]
@@ -350,6 +351,7 @@ const PostCard = ({
           avatar: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx((next_link__WEBPACK_IMPORTED_MODULE_4___default()), {
             href: `/user/${post.User.id}`,
             legacyBehavior: true,
+            prefetch: false,
             children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx("a", {
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx(antd__WEBPACK_IMPORTED_MODULE_1__.Avatar, {
                 children: post.User.nickname[0]
@@ -375,6 +377,7 @@ const PostCard = ({
             avatar: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx((next_link__WEBPACK_IMPORTED_MODULE_4___default()), {
               href: `/user/${item.User.id}`,
               legacyBehavior: true,
+              prefetch: false,
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx("a", {
                 children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx(antd__WEBPACK_IMPORTED_MODULE_1__.Avatar, {
                   children: item.User.nickname[0]
@@ -419,6 +422,7 @@ const PostCardContent = ({
       return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
         href: `/hashtag/${v.slice(1)}`,
         legacyBehavior: true,
+        prefetch: false,
         children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx("a", {
           children: v
         })

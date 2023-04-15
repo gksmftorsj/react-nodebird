@@ -37,6 +37,7 @@ passportConfig();
 // head -> 헤더만 가져올 때(원래 헤더 or 바디 가져옴)
 
 if (process.env.NODE_ENV === "production") {
+  app.set("trust proxy", 1);
   app.use(morgan("combined"));
   app.use(hpp());
   app.use(helmet());
@@ -75,6 +76,7 @@ app.use(
     saveUninitialized: false,
     resave: false,
     secret: process.env.COOKIE_SECRET,
+    proxy: true,
     cookie: {
       httpOnly: true,
       secure: true,

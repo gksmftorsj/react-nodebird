@@ -56,7 +56,6 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_use
 const rootReducer = (state, action) => {
   switch (action.type) {
     case next_redux_wrapper__WEBPACK_IMPORTED_MODULE_0__.HYDRATE:
-      console.log("HYDRATE", action);
       return action.payload;
 
     default:
