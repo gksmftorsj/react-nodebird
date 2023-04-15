@@ -141,4 +141,4 @@ node_modules
 .env
 
 # react-nodebird--admin 폴더 무시
-react-nodebird--admin/
+# react-nodebird--admin/
